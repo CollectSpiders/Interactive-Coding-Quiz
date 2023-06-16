@@ -151,7 +151,13 @@ function endQuiz() {
 }
 
 // event listener for the initial submission 
-
+initialsForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    // Save initials and score here
+    var initials = initialsInput.value;
+    // TODO complete the alert
+    alert();
+});
 
 // event listener for the start button
 startButton.addEventListener("click", startQuiz);
