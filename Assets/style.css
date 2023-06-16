@@ -14,22 +14,30 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .choice {
+    margin-bottom: 10px;
 }
 
 #timer {
+    margin-bottom: 20px;
 }
 
 #game-over-container {
+    display: none;
+    text-align: center;
 }
 
 #game-over-container h2 {
+    margin-top: 0;
 }
 
 #initials-form {
+    margin-top: 10px;
 }
 
 #initials-form label {
+    margin-right: 5px;
 }

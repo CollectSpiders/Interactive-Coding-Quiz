@@ -2,6 +2,12 @@
 var quizContainer = document.getElementById("quiz-container");
 var questionElement = document.getElementById("question");
 var choicesContainer = document.getElementById("choices");
+var timeElement = document.getElementById("time");
+var startButton = document.getElementById("start-btn");
+var gameOverContainer = document.getElementById("game-over-container");
+var scoreElement = document.getElementById("score");
+var initialsForm = document.getElementById("initials-form");
+var initialsInput = document.getElementById("initials");
 
 
 // initialize variables
@@ -106,12 +112,37 @@ function showQuestion() {
 
 // Checks the selected answer
 function checkAnswer(event) {
+    var selectedChoice = event.target;
+    var question = questions[currentQuestionIndex];
 
+    if (selectedChoice.textContent === question.choices[question.answer]) {
+        // increases the score if the selected choice is correct
+        score++;
+    } else {
+        // decreases score if incorrect
+        timeLeft -= 10;
+    }
+
+    // moves to the next question
+    currentQuestionIndex++;
+
+    // checks if all questions have been answered else displays next question
+    if (currentQuestionIndex === questions.length) {
+        endQuiz();
+    } else {
+        showQuestion();
+    }
 }
 
 // this updates the timer
 function updateTimer() {
+    timeLeft--;
+    timeElement.textContent = timeLeft;
 
+    // this check will end the quiz if out of time
+    if (timeLeft <= 0) {
+        endQuiz();
+    }
 }
 
 // Fuction to end the quiz
