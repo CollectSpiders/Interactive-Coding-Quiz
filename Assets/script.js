@@ -147,7 +147,10 @@ function updateTimer() {
 
 // Fuction to end the quiz
 function endQuiz() {
-
+    // stops the timer
+    clearInterval(timerInterval);
+    //displays the final score
+    scoreElement.textContent = score;
 }
 
 // event listener for the initial submission 
@@ -156,7 +159,7 @@ initialsForm.addEventListener("submit", function (event) {
     // Save initials and score here
     var initials = initialsInput.value;
     // TODO complete the alert
-    alert();
+    alert("initials: " + initials + "/nScore: " + score);
 });
 
 // event listener for the start button
