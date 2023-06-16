@@ -9,7 +9,6 @@ var scoreElement = document.getElementById("score");
 var initialsForm = document.getElementById("initials-form");
 var initialsInput = document.getElementById("initials");
 
-
 // initialize variables
 var currentQuestionIndex = 0;
 var timeLeft = 60;
@@ -86,7 +85,7 @@ var questions = [
     // can add more questions here via copy pasta the above comment. . . 
 ];
 
-// this function starts the quiz
+// starts the quiz
 function startQuiz() {
     quizContainer.style.display = "block";
     startButton.style.display = "none";
@@ -149,6 +148,10 @@ function updateTimer() {
 function endQuiz() {
     // stops the timer
     clearInterval(timerInterval);
+    // hides the quiz container
+    quizContainer.style.display = "none";
+    // displays the came over container
+    gameOverContainer.style.display = "block";
     //displays the final score
     scoreElement.textContent = score;
 }
@@ -156,10 +159,10 @@ function endQuiz() {
 // event listener for the initial submission 
 initialsForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    // Save initials and score here
     var initials = initialsInput.value;
-    // TODO complete the alert
-    alert("initials: " + initials + "/nScore: " + score);
+    // Save initials and score here
+
+    alert("Initials: " + initials + "\nScore: " + score);
 });
 
 // event listener for the start button
