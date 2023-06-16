@@ -14,18 +14,62 @@ var score = 0;
 var questions = [
     // question # 1
     {
-        question: "",
-        choices: ["", "", "", ""],
+        question: "What does HTML stand for?",
+        choices: ["a) HyperText Markup Language", "b) High-level Text Manipulation Language", "c) Home Tool Management Language", "d) Hyperlink Text Manipulation Logic"],
         answer: 0,
     },
+    // question # 2
     {
-        question: "",
-        choices: ["", "", "", ""],
+        question: "Which programming language is known for its use in creating web applications?",
+        choices: ["a) Python", "b) Java", "c) Ruby", "d) JavaScript"],
+        answer: 3,
+    },
+    // question # 3
+    {
+        question: "What is the result of 9 + 3 * 2?",
+        choices: ["a) 24", "b) 15", "c) 18", "d) 11"],
+        answer: 2,
+    },
+    // question # 4
+    {
+        question: "What is the purpose of the document.getElementById() method in JavaScript?",
+        choices: ["a) It retrieves the value of an HTML input field.", "b) It adds a new HTML element to the document.", "c) It changes the CSS style of an HTML element.", "d) It retrieves an HTML element by its unique identifier."],
+        answer: 3,
+    },
+    // question # 5
+    {
+        question: "What is the syntax to declare a variable in JavaScript?",
+        choices: ["a) var myVariable;", "b) variable myVariable;", "c) let myVariable;", "d) const myVariable;"],
         answer: 0,
     },
+    // question # 6
     {
-        question: "",
-        choices: ["", "", "", ""],
+        question: "Which data type is used to store a sequence of characters in JavaScript?",
+        choices: ["a) Integer", "b) String", "c) Boolean", "d) Float"],
+        answer: 3,
+    },
+    // question # 7
+    {
+        question: "What does CSS stand for?",
+        choices: ["a) Creative Style Sheets", "b) Cascading Style Sheets", "c) Computer Style Sheets", "d) Complex Style Syntax"],
+        answer: 1,
+    },
+    // question # 8
+    {
+        question: "Which programming language is often used for data analysis and scientific",
+        choices: ["a) C++", "b) Java", "c) R", "d) PHP"],
+        answer: 2,
+    },
+    // question # 9
+    {
+        question: "What does the acronym API stand for?",
+        choices: ["a) Automated Programming Interface", "b) Application Programming Interface", "c) Advanced Programming Integration", "d) Artificial Programming Intelligence"],
+        answer: 1,
+    },
+    // question # 10
+    {
+        question: "Which operator is used to concatenate two strings in many programming languages?",
+        choices: ["a) +", "b) -", "c) *", "d) /"],
         answer: 0,
     }
 /*  {
@@ -33,6 +77,7 @@ var questions = [
         choices: ["", "", "", ""],
         answer: 0,
     } */
+    // can add more questions here via copy pasta the above comment. . . 
 ];
 
 // this function starts the quiz
@@ -45,7 +90,18 @@ function startQuiz() {
 
 // this displays a single question
 function showQuestion() {
+    var question = questions[currentQuestionIndex];
+    questionElement.textContent = question.question;
+    choicesContainer.innerHTML = "";
 
+    // this loops through the choices and creates buttons for each choice
+    for (var i = 0; i < question.choices.length; i++) {
+        var choiceButton = document.createElement("button");
+        choiceButton.setAttribute("class", "choice");
+        choiceButton.textContent = question.choices[i];
+        choiceButton.addEventListener("click", checkAnswer);
+        choicesContainer.appendChild(choiceButton);
+    }
 }
 
 // Checks the selected answer
